@@ -1,0 +1,62 @@
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  width: 8%;
+  height: 6%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+nav .list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.btn {
+  padding: 8px 20px;
+  background-color: green;
+  color: beige;
+}
+
+.delete {
+  background-color: red;
+  color: black;
+  padding: 8px 20px;
+  margin: 8px;
+}
+
+.form input {
+  align-self: center;
+  width: 80%;
+  margin-bottom: 5;
+}
+label input {
+  padding: 6px;
+  margin-bottom: 6px;
+} 
+
+.maindiv {
+  border: solid 3px grey;
+  width: 30%;
+  height:"80%";
+}
+ .profile {
+  align-content: right;
+  margin-left: 12px;
+  text-align: center;
+ }
+
+ .employeelist {
+  text-align: center;
+ }

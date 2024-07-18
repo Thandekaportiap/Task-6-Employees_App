@@ -11,11 +11,16 @@ function App() {
 
   return (
     <>
-    <Navbar/>
-
-    <Registration/>
-    <List/>
-    <Profile/>  
+    <div>
+      <Navbar/>
+      </div>
+    <div className='main'>
+      <Registration/>
+     
+      <List/>
+     
+      <Profile/>
+      </div>  
     </>
   )
 }

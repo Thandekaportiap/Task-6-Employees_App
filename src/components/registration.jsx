@@ -1,48 +1,47 @@
 import { useState } from "react"
-import Profile from "./profile"
 
 const registration = () => {
 
-    const [name, setName] = useState("")
-    const [message, setMessage] = useState("")
+    const [input, setInput] = useState({});
 
-function handleSubmit(event){
-    event.preventDefault();
-    setMessage({name})
-}
-
-    function changeName(event) {
-        setName(event.target.value)
+    function handleSubmit(event) {
+        event.preventDefault();
+        
     }
 
+    function handleChange(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInput(values => ({ ...values, [name]: value }))
+    }
 
+    console.log(input);
 
     return (
         <>
             <div className="maindiv">
 
-                <h2 style={{textAlign:"center"}}>Welcome to AW.io </h2>
-                <h3  style={{textAlign:"center"}}>Please fill in your personal information</h3>
+                <h2 style={{ textAlign: "center" }}>Welcome to AW.io </h2>
+                <h3 style={{ textAlign: "center" }}>Please fill in your personal information</h3>
 
-                <form className="form">
+                <form className="form" >
                     <label htmlFor="Name">
-                        <input type="text" placeholder="FirstNames" required onChange={changeName}/></label>
+                        <input type="text" placeholder="name" name="Names" value={input.Names || ""} onChange={handleChange} /></label>
                     <label htmlFor="Surname">
-                        <input type="text" placeholder="LastName" required /></label>
+                        <input type="text" placeholder="surname" name="LastName" value={input.LastName || ""} onChange={handleChange} /></label>
                     <label htmlFor="Email">
-                        <input type="Email" placeholder="Email" required /></label>
+                        <input type="Email" placeholder="email" name="Email" value={input.Email || ""} onChange={handleChange} /></label>
                     <label htmlFor="phoneNumber">
-                        <input type="phone number" placeholder="071 2345 678" required /></label>
+                        <input type="phone number" placeholder="number" name="number" value={input.number || ""} onChange={handleChange} /></label>
                     <label htmlFor="Name">
-                        <input type="text" placeholder="Position" required /></label>
+                        <input type="text" placeholder="position" name="Position" value={input.Position || ""} onChange={handleChange} /></label>
                     <label htmlFor="number">
-                        <input type="number" placeholder="Employee Number" required /></label>
+                        <input type="number" placeholder="Employee number" name="EmployeeNo" value={input.EmployeeNo || ""} onChange={handleChange} /></label>
                     <label htmlFor="button">
-                        <input type="button" value="submit" className="btn"  onSubmit={handleSubmit}/></label>
+                        <input type="button" value="submit" className="btn" onSubmit={handleSubmit} /></label>
                 </form>
 
-                <h3>{name}</h3>
-                
+
             </div>
         </>
     )

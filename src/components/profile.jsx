@@ -7,7 +7,7 @@ const profile = () =>{
         <div className="maindiv profile" >
             <h3>Welcome .</h3>
 
-            <p>Hello</p>
+            
             <p>Hello</p>
             <p>Hello</p>
             <p>Hello</p>

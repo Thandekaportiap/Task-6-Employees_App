@@ -3,7 +3,7 @@ import Profile from './profile'
 import List from "./list";
 
 const Registration = () => {
-
+    const [list, setList] = useState([]);
     const [input, setInput] = useState(() => {
         const localData = localStorage.getItem('input');
         return localData ? JSON.parse(localData):{};
@@ -22,31 +22,26 @@ const Registration = () => {
         setInput(values => ({ ...values, [name]: value }))
     }
 
-    let list =[
-        {
-            name:"Nosihle",surname:"Mthembu", id:"01"
-        },
-        {
-            name:"Sanele",surname:"Mkhize", id:"02"
-        },
-        {
-            name:"Thobani",surname:"Zondi", id:"03"
-        },
-        {
-            name:"Asanda", surname:"Madondo", id:"01"
-        }
-    ];
+    // let list =[
+    //     {
+    //         name:"Nosihle",surname:"Mthembu", id:"01"
+    //     },
+    //     {
+    //         name:"Sanele",surname:"Mkhize", id:"02"
+    //     },
+    //     {
+    //         name:"Thobani",surname:"Zondi", id:"03"
+    //     },
+    //     {
+    //         name:"Asanda", surname:"Madondo", id:"01"
+    //     }
+    // ];
 
-    // const handleAdd = () =>{
-    //     list.push(input)
-    // }
-
-    const handleAdd = (input) => {
-        if (input) {
-            return [...list, input];  // Creates a new array with the new input added
-        }
-        return list;  // Return the original list if input is invalid
+    const handleAdd = () =>{
+      list.push(input)
     }
+
+    
 
     console.log(input);
 

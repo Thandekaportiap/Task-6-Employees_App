@@ -1,15 +1,15 @@
 
 
 
-const profile = () =>{
+const profile = (props) =>{
     return (
         <>
         <div className="maindiv profile" >
-            <h3>Welcome .</h3>
+            <h3>Welcome {props.id}</h3>
 
             
-            <p>Hello</p>
-            <p>Hello</p>
+            <p>Name: {props.id}</p>
+            <p>Surname : {props.surname}</p>
             <p>Hello</p>
 
             <button className="btn">Edit</button>

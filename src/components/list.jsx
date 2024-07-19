@@ -1,20 +1,7 @@
 import { useState } from "react";
 
-const list = () =>{
-let list =[
-    {
-        name:"Nosihle",surname:"Mthembu", id:"01"
-    },
-    {
-        name:"Sanele",surname:"Mkhize", id:"02"
-    },
-    {
-        name:"Thobani",surname:"Zondi", id:"03"
-    },
-    {
-        name:"Asanda", surname:"Madondo", id:"01"
-    }
-];
+const list = (list) =>{
+
 
 const [filteredList, setFilteredList] = useState(list);
 const [search, setSearch] = useState("");
@@ -41,7 +28,7 @@ const handleSearch = (event) => {
                 <input type="text" name="search" placeholder="Search..." value={search} onChange={handleSearch}/>
             </label>
 <div>
-            {filteredList.map(function (list, index) {
+            {filteredList.list.map(function (list, index) {
                 return (
                     <h3 key={index}>
                     {list.name} {list.surname}

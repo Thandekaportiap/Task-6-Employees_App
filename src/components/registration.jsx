@@ -1,50 +1,36 @@
-import React, { useEffect, useState } from "react"
-import Profile from './profile'
-import List from "./list";
 
-const Registration = () => {
-    const [list, setList] = useState([]);
-    const [input, setInput] = useState(() => {
-        const localData = localStorage.getItem('input');
-        return localData ? JSON.parse(localData):{};
+import React, { useState } from 'react';
+
+const RegistrationForm =({ onAddEmployee }) => {
+    const [employee, setEmployee] = useState({
+      name: '',
+      surname: '',
+      email: '',
+      phone: '',
+      image: '',
+      position: '',
+      id: ''
     });
-    useEffect(() => {
-        localStorage.setItem('input',JSON.stringify(input))
-    }, [input]);
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        
-    }
-
-    function handleChange(event) {
-        const { name, value } = event.target;
-        setInput(values => ({ ...values, [name]: value }))
-    }
-
-    // let list =[
-    //     {
-    //         name:"Nosihle",surname:"Mthembu", id:"01"
-    //     },
-    //     {
-    //         name:"Sanele",surname:"Mkhize", id:"02"
-    //     },
-    //     {
-    //         name:"Thobani",surname:"Zondi", id:"03"
-    //     },
-    //     {
-    //         name:"Asanda", surname:"Madondo", id:"01"
-    //     }
-    // ];
-
-    const handleAdd = () =>{
-      list.push(input)
-    }
-
-    
-
-    console.log(input);
-
+  
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setEmployee((prevEmployee) => ({ ...prevEmployee, [name]: value }));
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      onAddEmployee(employee);
+      setEmployee({
+        name: '',
+        surname: '',
+        email: '',
+        phone: '',
+        image: '',
+        position: '',
+        id: ''
+      });
+    };
+  
     return (
         <>
             <div className="maindiv">
@@ -52,40 +38,38 @@ const Registration = () => {
                 <h2 style={{ textAlign: "center" }}>Welcome to AW.io </h2>
                 <h3 style={{ textAlign: "center" }}>Please fill in your personal information</h3>
 
-                <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="Name">
-                        <input type="text" placeholder="name" name="Names" value={input.Names || ""} onChange={handleChange} /></label>
-                    <label htmlFor="Surname">
-                        <input type="text" placeholder="surname" name="LastName" value={input.LastName || ""} onChange={handleChange} /></label>
-                    <label htmlFor="Email">
-                        <input type="Email" placeholder="email" name="Email" value={input.Email || ""} onChange={handleChange} /></label>
-                    <label htmlFor="phoneNumber">
-                        <input type="phone number" placeholder="number" name="number" value={input.number || ""} onChange={handleChange} /></label>
-                    <label htmlFor="Name">
-                        <input type="text" placeholder="position" name="Position" value={input.Position || ""} onChange={handleChange} /></label>
-                    <label htmlFor="number">
-                        <input type="number" placeholder="Employee number" name="EmployeeNo" value={input.EmployeeNo || ""} onChange={handleChange} /></label>
-                    <label htmlFor="button">
-                        <input type="button" value="submit" className="btn" /></label>
-                </form>
+                <form className='form' onSubmit={handleSubmit}>
+      <label htmlFor="name">
+      <input type="text" placeholder="name" id="name" name="name" value={employee.name} onChange={handleChange} /></label>
 
-                <button type="submit" className="btn" onClick={handleAdd}>Add</button>
+      <label htmlFor="surname">
+      <input type="text" placeholder='Surname' id="surname" name="surname" value={employee.surname} onChange={handleChange} /></label>
 
-                    
-                    {/* {{input.map(function(input,index){
-                        return(
-                            <p key={index}>
-                                hi{input.Names} {input.LastName}
-                            </p>
-                        )
-                    })}} */}
+      <label htmlFor="email">
+      <input type="email" placeholder='Email' id="email" name="email" value={employee.email} onChange={handleChange} /></label>
+
+      <label htmlFor="phone">
+      <input type="tel" placeholder='phoneNumber' id="phone" name="phone" value={employee.phone} onChange={handleChange} /></label>
+
+      <label htmlFor="position">
+      <input type="text" placeholder='Position' id="position" name="position" value={employee.position} onChange={handleChange} /></label>
+
+      <label htmlFor="id">
+      <input type="text" placeholder='EmployeeNo' id="id" name="id" value={employee.id} onChange={handleChange} /></label>
+
+      <label htmlFor="image">Image
+      <input type="file" placeholder='image' id="image" name="image" value={employee.image} onChange={handleChange} accept="image/*" /></label>
+
+
+      <button className='btn' type="submit">Submit</button>
+    </form>
+                
 
                     
             </div>
-            <List list={list}/>
-            <Profile id={input.Names} surname={input.LastName}/>
+           
         </>
     )
 }
 
-export default Registration
+export default RegistrationForm

@@ -2,6 +2,8 @@ import React from 'react';
 
 const Profile = ({ employee, onDeleteEmployee, onUpdateEmployee }) => {
   return (
+    <>
+    
     <div className="maindiv profile" >
        <h4>Welcome {employee.name}</h4>
       <img src={employee.image} alt={employee.name} />
@@ -13,6 +15,7 @@ const Profile = ({ employee, onDeleteEmployee, onUpdateEmployee }) => {
       <button className='btn' onClick={() => onUpdateEmployee(employee.id)}>Edit</button>
        <button className='delete' onClick={() => onDeleteEmployee(employee.id)}>Delete</button>
     </div>
+    </>
   );
 };
 

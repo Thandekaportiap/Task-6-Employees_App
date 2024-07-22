@@ -1,11 +1,8 @@
-
 import React, { useEffect, useState } from "react"
 import Navbar from "./components/navbar"
 import Registration from "./components/registration"
 import Profile from "./components/profile";
-
 import List from "./components/list";
-
 
 
 import './App.css'
@@ -30,17 +27,18 @@ function App() {
     localStorage.setItem('employees', JSON.stringify(employees));
   }, [employees]);
 
-  const handleAddEmployee = (event,employee) => {
-    event.preventDefault ()
+  const handleAddEmployee = (employee) => {
     setEmployees([...employees, employee]);
   };
 
-  //Delete Employees data
+  // //Delete Employees data
   const handleDeleteEmployee = (id) => {
-    setEmployees(employees.filter((employee) => employee.id !== id));
-  };
+   setEmployees(employees.filter((employee) => employee.id !== id));
+   };
 
-  // All the Employee to edit the infomation
+  
+
+  // Allow the Employee to edit the infomation
   const handleUpdateEmployee = (id, updatedEmployee) => {
     setEmployees(
       employees.map((employee) => (employee.id === id ? updatedEmployee : employee))
@@ -59,7 +57,7 @@ function App() {
 
   //Stores the FilteredList in an Object
   const filteredEmployees = employees.filter((employee) =>
-    employee.id.toLowerCase().includes(searchTerm.toLowerCase())
+    employee.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
   //console.log("this is my list" + filteredEmployees)

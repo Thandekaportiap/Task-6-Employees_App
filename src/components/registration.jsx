@@ -61,7 +61,8 @@ const RegistrationForm =({ onAddEmployee }) => {
       <input type="file" placeholder='image' id="image" name="image" value={employee.image} onChange={handleChange} accept="image/*" /></label>
 
 
-      <button className='btn' type="submit">Submit</button>
+      <button className='btn'>Submit</button>
+      
     </form>
                 
 

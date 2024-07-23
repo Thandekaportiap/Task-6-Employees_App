@@ -44,7 +44,8 @@ function App() {
       employees.map((employee) => (employee.id === id ? updatedEmployee : employee))
     );
   };
-//console.log("this is the new updated infomation")
+    
+
 
   const handleSelectEmployee = (employee) => {
     setSelectedEmployee(employee);
@@ -57,7 +58,7 @@ function App() {
 
   //Stores the FilteredList in an Object
   const filteredEmployees = employees.filter((employee) =>
-    employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+    employee.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
   //console.log("this is my list" + filteredEmployees)
@@ -73,14 +74,12 @@ function App() {
      
       <List 
        employees={filteredEmployees}
-       onDeleteEmployee={handleDeleteEmployee}
-       onUpdateEmployee={handleUpdateEmployee}
        onSelectEmployee={handleSelectEmployee}
        onSearch={handleSearch}
      />
      
      {selectedEmployee && (
-      <Profile employee={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} />
+      <Profile employee={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} onDeleteEmployee={handleDeleteEmployee} />
     )}
      
       </div>  

@@ -15,17 +15,17 @@ function App() {
 
 
   useEffect(() => {
-    // Load employees data from local storage
+    // Get employees data from local storage
     const storedEmployees = localStorage.getItem('employees');
     if (storedEmployees) {
       setEmployees(JSON.parse(storedEmployees));
     }
   }, []);
 
-  useEffect(() => {
-    // Save employees data to local storage
-    localStorage.setItem('employees', JSON.stringify(employees));
-  }, [employees]);
+  // useEffect(() => {
+  //   // Send employees data to local storage
+  //   localStorage.setItem('employees', JSON.stringify(employees));
+  // }, [employees]);
 
   const handleAddEmployee = (employee) => {
     setEmployees([...employees, employee]);
@@ -44,9 +44,7 @@ function App() {
       employees.map((employee) => (employee.id === id ? updatedEmployee : employee))
     );
   };
-    
-
-
+  
   const handleSelectEmployee = (employee) => {
     setSelectedEmployee(employee);
   };

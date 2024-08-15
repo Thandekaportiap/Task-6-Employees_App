@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import Swal from 'sweetalert2'
 
 const RegistrationForm =({ onAddEmployee }) => {
     const [employee, setEmployee] = useState({
@@ -29,6 +30,13 @@ const RegistrationForm =({ onAddEmployee }) => {
         position: '',
         id: ''
       });
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Successfully!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     };
   
     return (
@@ -57,11 +65,11 @@ const RegistrationForm =({ onAddEmployee }) => {
       <label htmlFor="id">
       <input type="text" placeholder='EmployeeNo' id="id" name="id" value={employee.id} onChange={handleChange} /></label>
 
-      <label htmlFor="image">Image
+      <label htmlFor="image">
       <input type="file" placeholder='image' id="image" name="image" value={employee.image} onChange={handleChange} accept="image/*" /></label>
 
 
-      <button className='btn'>Submit</button>
+      <button className='btn submit'>Submit</button>
       
     </form>
                 

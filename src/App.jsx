@@ -28,7 +28,11 @@ function App() {
   // }, [employees]);
 
   const handleAddEmployee = (employee) => {
-    setEmployees([...employees, employee]);
+  //setEmployees([...employees, employee]);
+    const storedEmployees = JSON.parse(localStorage.getItem('employees'));
+    console.log(storedEmployees)
+  storedEmployees.push(employee)
+  localStorage.setItem('employees', JSON.stringify(storedEmployees));
   };
 
   // //Delete Employees data
@@ -63,6 +67,7 @@ function App() {
  
   return (
     <>
+    <div style={{backgroundColor:"", height:"100vh"}}>
     <div>
       <Navbar/>
       </div>
@@ -82,6 +87,7 @@ function App() {
     )}
      
       </div>  
+    </div>
     </>
   )
 }

@@ -20,17 +20,16 @@ nav .list {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
+  margin: 15px;
 }
 li {
-  padding: 40px;
-  margin-right: 7px;
+  padding: 4%;
   list-style: none;
 }
 
 .btn {
   padding: 8px 20px;
-  background-color: green;
+  background-color: #4E91FD;
   color: beige;
   margin-left: 6px;
   border-radius: 8px;
@@ -46,8 +45,10 @@ li {
 .form input {
   align-self: center;
   width: 80%;
-  margin-bottom: 5;
+  margin-bottom: 3%;
   border-radius: 10px;
+  border: 3px solid grey;
+  margin-left: 3%;
 }
 label input {
   padding: 6px;
@@ -56,6 +57,8 @@ label input {
 
 .maindiv {
   border: solid 3px grey;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 black;
   width: 35%;
   height:"80%";
 }
@@ -72,4 +75,17 @@ label input {
  span {
   font-size: 26px;
   text-align: center;
+ }
+
+ #search {
+  margin-top: 3%;
+  height: 8%;
+  width: 50%;
+  border-radius: 10px;
+  border: 3px solid grey;
+ }
+
+ .submit {
+  margin-bottom: 2%;
+  width: 85%;
  }

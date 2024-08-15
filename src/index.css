@@ -33,6 +33,7 @@ li {
   background-color: green;
   color: beige;
   margin-left: 6px;
+  border-radius: 8px;
 }
 
 .delete {
@@ -46,6 +47,7 @@ li {
   align-self: center;
   width: 80%;
   margin-bottom: 5;
+  border-radius: 10px;
 }
 label input {
   padding: 6px;

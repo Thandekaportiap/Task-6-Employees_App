@@ -40,11 +40,11 @@ function App() {
 
   // Allow the Employee to edit the infomation
   const handleUpdateEmployee = (id, updatedEmployee) => {
-    // setEmployees(
-    //   employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
-    handleDeleteEmployee(id)
-    handleAddEmployee(id)
+    setEmployees(
+      employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
   };
+//console.log("this is the new updated infomation")
+
   
   const handleSelectEmployee = (employee) => {
     setSelectedEmployee(employee);
@@ -57,8 +57,9 @@ function App() {
 
   //Stores the FilteredList in an Object
   const filteredEmployees = employees.filter((employee) =>
-    employee.id.toLowerCase().includes(searchTerm.toLowerCase())
+    employee.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  console.log(filteredEmployees)
  
   return (
     <>
@@ -70,12 +71,14 @@ function App() {
      
       <List 
        employees={filteredEmployees}
+       onDeleteEmployee={handleDeleteEmployee}
+       onUpdateEmployee={handleUpdateEmployee}
        onSelectEmployee={handleSelectEmployee}
        onSearch={handleSearch}
      />
      
      {selectedEmployee && (
-      <Profile employees={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} onDeleteEmployee={handleDeleteEmployee} onAddEmployee={handleAddEmployee} />
+      <Profile employees={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} onDeleteEmployee={handleDeleteEmployee} />
     )}
      
       </div>  

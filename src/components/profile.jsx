@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 const Profile = ({ employees, onDeleteEmployee, onUpdateEmployee,onAddEmployee  }) => {
+  console.log(employees)
+
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [employee, setEmployee] = useState({});
 

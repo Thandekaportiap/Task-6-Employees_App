@@ -5,10 +5,10 @@ const navbar = () =>{
         <>
         <nav className="nav">
             <img src={Logo} alt="logo" className="logo" />
-            <ul className="list">
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact Us</li>
+            <ul >
+                <span className="list">Home</span>
+                <span className="list">About</span>
+                <span className="list">Contact</span>
             </ul>
 
         </nav>

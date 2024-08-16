@@ -16,11 +16,9 @@
 }
 
 nav .list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   margin: 15px;
+  color: #4E91FD;
+  padding: 2% 4%;
 }
 li {
   padding: 4%;
@@ -89,3 +87,5 @@ label input {
   margin-bottom: 2%;
   width: 85%;
  }
+
+ 

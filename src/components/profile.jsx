@@ -22,15 +22,7 @@ const Profile = ({ employees, onDeleteEmployee, onUpdateEmployee,onAddEmployee  
   const handleSubmit = (event) => {
     event.preventDefault();
     onAddEmployee(employee);
-    setEmployee({
-      name: '',
-      surname: '',
-      email: '',
-      phone: '',
-      image: '',
-      position: '',
-      id: ''
-    });
+  
   };
 
 

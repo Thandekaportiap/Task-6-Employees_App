@@ -45,17 +45,17 @@ function App() {
   
 
   // Allow the Employee to edit the infomation
-  // const handleUpdateEmployee = (id, updatedEmployee) => {
-  //   setEmployees(
-  //     employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
-  // };
+  const handleUpdateEmployee = (id, updatedEmployee) => {
 
-  const handleUpdateEmployee = (id) => {
     const filteredEmployee= employees.filter((employee) => employee.id !== id);
    setEmployees(filteredEmployee)
    localStorage.setItem('employees', JSON.stringify(filteredEmployee));
-    handleAddEmployee()
-  }
+
+    setEmployees(
+      employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
+  };
+
+  
 
   
   const handleSelectEmployee = (employee) => {
@@ -91,7 +91,7 @@ function App() {
      />
      
      {selectedEmployee && (
-      <Profile employees={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} onDeleteEmployee={handleDeleteEmployee} />
+      <Profile employees={selectedEmployee} onUpdateEmployee={handleUpdateEmployee} onDeleteEmployee={handleDeleteEmployee} onAddEmployee={handleAddEmployee}/>
     )}
      
       </div>  

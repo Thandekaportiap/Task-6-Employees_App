@@ -1,18 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Profile = ({ employees, onDeleteEmployee, onUpdateEmployee,onAddEmployee  }) => {
-  console.log(employees)
-
+const Profile = ({ employees, onDeleteEmployee, onUpdateEmployee }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [employee, setEmployee] = useState({
-    name: '',
-    surname: '',
-    email: '',
-    phone: '',
-    image: '',
-    position: '',
-    id: ''
-  });
+  const [employee, setEmployee] = useState(employees);
+
+  useEffect(() => {
+    setEmployee(employees); // Update employee state when props change
+  }, [employees]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,43 +15,46 @@ const Profile = ({ employees, onDeleteEmployee, onUpdateEmployee,onAddEmployee  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddEmployee(employee);
-  
-  };
-
-
-  const handleButtonClick = () => {
-    setIsFormVisible(true);
-  };
-
-  const handleCloseForm = () => {
+    onUpdateEmployee(employee);
     setIsFormVisible(false);
   };
+
+  const handleDelete = () => {
+    onDeleteEmployee(employees.id); // Call delete function
+    setEmployee(null); // Optionally reset the employee state to refresh the view
+  };
+
   return (
-    <>
-    
-    <div className="maindiv profile" >
-       <h4>Welcome {employees.name}</h4>
-      <img src={employees.image} alt={employees.name} />
-      <h4>{employees.name} {employees.surname}</h4>
-      <p>{employees.email}</p>
-      <p>{employees.phone}</p>
-      <p>{employees.position}</p>
+    <div className="maindiv profile">
+      {employee ? (
+        <>
+          <h4>Welcome {employee.name}</h4>
+          <img src={employee.image} alt={employee.name} style={{height:"50px", width:"40px"}}/>
+          <h4>{employee.name} {employee.surname}</h4>
+          <p>{employee.email}</p>
+          <p>{employee.phone}</p>
+          <p>{employee.position}</p>
 
-      
-      <button className='btn' onClick={handleButtonClick}>Edit</button>
-      {isFormVisible && ( 
-        <form className='form' onSubmit={handleSubmit}>
-        <input type="text" placeholder="name" id="name" name="name" value={employee.name || employees.name}  onChange={handleChange}  />
-        <input type="text" placeholder='Surname' id="surname" name="surname" value={employee.surname || employees.surname} onChange={handleChange} />
-        <input type="number" placeholder='EmployeeNo' id="id" name="id" value={employee.id || employees.id} onChange={handleChange} />
-    <button onClick={handleCloseForm}>Close</button>
-    <button className='btn' type='submit' onClick={onUpdateEmployee}>Update</button>
-    </form>)}
-       <button className='delete' onClick={() => onDeleteEmployee(employees.id)}>Delete</button>
-
+          <button className='btn' onClick={() => setIsFormVisible(true)}>Edit</button>
+          {isFormVisible && ( 
+            <form className='form' onSubmit={handleSubmit}>
+              <input type="text" name="name" value={employee.name} onChange={handleChange} />
+              <input type="text" name="surname" value={employee.surname} onChange={handleChange} />
+              <input type="email" name="email" value={employee.email} onChange={handleChange} />
+              <input type="tel" name="phone" value={employee.phone} onChange={handleChange} />
+              <input type="text" name="position" value={employee.position} onChange={handleChange} />
+              <input type="text" name="image" value={employee.image} onChange={handleChange} />
+              <input type="number" name="id" value={employee.id} onChange={handleChange} />
+              <button type="button" onClick={() => setIsFormVisible(false)}>Close</button>
+              <button className='btn' type='submit'>Update</button>
+            </form>
+          )}
+          <button className='delete' onClick={handleDelete}>Delete</button>
+        </>
+      ) : (
+        <p>Employee has been deleted.</p>
+      )}
     </div>
-    </>
   );
 };
 

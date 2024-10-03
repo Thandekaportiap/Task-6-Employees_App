@@ -40,19 +40,28 @@ function App() {
    const filteredEmployee= employees.filter((employee) => employee.id !== id);
    setEmployees(filteredEmployee)
    localStorage.setItem('employees', JSON.stringify(filteredEmployee));
+   setSelectedEmployee(null);
    };
 
   
 
   // Allow the Employee to edit the infomation
-  const handleUpdateEmployee = (id, updatedEmployee) => {
+  // const handleUpdateEmployee = (id, updatedEmployee) => {
 
-    const filteredEmployee= employees.filter((employee) => employee.id !== id);
-   setEmployees(filteredEmployee)
-   localStorage.setItem('employees', JSON.stringify(filteredEmployee));
+  //   const filteredEmployee= employees.filter((employee) => employee.id !== id);
+  //  setEmployees(filteredEmployee)
+  //  localStorage.setItem('employees', JSON.stringify(filteredEmployee));
 
-    setEmployees(
-      employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
+  //   setEmployees(
+  //     employees.map((employee) => (employee.id === id ? updatedEmployee : employee)));
+  // };
+
+  const handleUpdateEmployee = (updatedEmployee) => {
+    const updatedEmployees = employees.map(emp => 
+      emp.id === updatedEmployee.id ? updatedEmployee : emp
+    );
+    setEmployees(updatedEmployees);
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
   };
 
   
@@ -62,12 +71,10 @@ function App() {
     setSelectedEmployee(employee);
   };
 
-  //Takes the search input
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  //Stores the FilteredList in an Object
   const filteredEmployees = employees.filter((employee) =>
     employee.id.toLowerCase().includes(searchTerm.toLowerCase())
   );

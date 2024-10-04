@@ -52,10 +52,10 @@ const RegistrationForm = ({ onAddEmployee }) => {
 
   return (
     <div className="maindiv">
-      <h2 style={{ textAlign: "center" }}>Welcome to AW.io</h2>
-      <h3 style={{ textAlign: "center" }}>Please fill in your personal information</h3>
-
-      <form className='form' onSubmit={handleSubmit}>
+      <h2 className='text-center text-2xl py-2'>Welcome to AW.io</h2>
+      <h3 className='text-center text-xl py-2'>Please fill in your personal information</h3>
+  
+      <form className='form text-black' onSubmit={handleSubmit}>
         <label htmlFor="name">
           <input type="text" placeholder="Name" id="name" name="name" value={employee.name} onChange={handleChange} />
         </label>
